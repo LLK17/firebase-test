@@ -1,0 +1,12 @@
+body{
+
+}
+
+input{
+  line-height: 2.5vh;
+  margin-bottom:2vh;
+}
+
+#display{
+  height:100px;
+}
