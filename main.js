@@ -32,27 +32,43 @@ window.onload=function(){
     });
   };
 
+
+
   function retrieve(){
     database.ref('users').once('value', function(snapshot){
-      var data=snapshot.val();
+
+      //For each loop to go through each child returned as part of the snapshot.
+      snapshot.forEach(function(childSnapshot) {
+      var childData = childSnapshot.val();
+
+      //Create Username <p> tag and add username
       var userPull = document.createElement('p');
-      var userPullNode=document.createTextNode(data.Username);
+      var userPullNode=document.createTextNode(childData.Username);
       userPull.appendChild(userPullNode);
-      console.log(data);
       document.getElementById('display').appendChild(userPull);
-      // var namePull = document.createElement('p');
-      // var namePullNode = document.createTextNode(data.name);
-      // namePull.appendChild(namePullNode);
-      // document.getElementById('display').appendChild(namePull);
-      // var emailPull = document.createElement('p');
-      // var emailPullNode = document.createTextNode(data.email);
-      // emailPull.appendChild(emailPullNode);
-      // document.getElementById('display').appendChild(emailPull);
-      // var phonePull = document.createElement('p');
-      // var phonePullNode = document.createTextNode(data.phone_number);
-      // phonePull.appendChild(phonePullNode);
-      // document.getElementById('display').appendChild(phonePull);
-      // console.log(data);
+
+      //Create Name <p> tag and add name
+      var namePull = document.createElement('p');
+      var namePullNode = document.createTextNode(childData.Name);
+      namePull.appendChild(namePullNode);
+      document.getElementById('display').appendChild(namePull);
+
+      //Create Email <p> tag and add email
+      var emailPull = document.createElement('p');
+      var emailPullNode = document.createTextNode(childData.Email);
+      emailPull.appendChild(emailPullNode);
+      document.getElementById('display').appendChild(emailPull);
+
+      //Create Phone number <p> tag and add phone number
+      var phonePull = document.createElement('p');
+      var phonePullNode = document.createTextNode(childData.Phone_number);
+      phonePull.appendChild(phonePullNode);
+      document.getElementById('display').appendChild(phonePull);
+
+
+    });
+
+
 
     } )
 
